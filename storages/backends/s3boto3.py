@@ -141,6 +141,7 @@ class S3Boto3StorageFile(File):
     file = property(_get_file, _set_file)
 
     def read(self, *args, **kwargs):
+        print(self._mode)
         if 'r' not in self._mode or '+' not in self._mode:
             raise AttributeError("File was not opened in read mode.")
         return self._force_mode(super().read(*args, **kwargs))
